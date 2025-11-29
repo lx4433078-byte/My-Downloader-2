@@ -36,20 +36,22 @@ async def any_msg(message: types.Message):
     ydl_opts = {
            'format': 'bestvideo+bestaudio/best',
            'merge_output_format': 'mp4',
-           'outtmpl': '%(id)s.%(ext)s',
-           'concurrent_fragment_downloads': 25,
-           'retries': 50,
-           'fragment_retries': 50,
+           'outtmpl': 'video.mp4',
+           'concurrent_fragment_downloads': 30,
+           'retries': 99,
+           'fragment_retries': 99,
            'http_headers': {
-               'User-Agent': 'Mozilla/5.0 (Linux; Android 12; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36',
-               'Referer': 'https://www.classplusapp.com/',
-               'Origin': 'https://www.classplusapp.com',
+               'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36',
+               'Referer': 'https://www.theveteran.in/',
+               'X-CDN-Tag': 'empty',
+               'Cache-Control': 'no-cache',
                'Accept': '*/*',
-               'Accept-Encoding': 'gzip, deflate',
-               'Accept-Language': 'en-US,en;q=0.9',
+               'Accept-Encoding': 'gzip, deflate, br',
+               'Connection': 'keep-alive',
            },
            'sleep_interval': 1,
            'max_sleep_interval': 5,
+           'nocheckcertificate': True,
     }
 
     try:
