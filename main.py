@@ -36,22 +36,25 @@ async def any_msg(message: types.Message):
     ydl_opts = {
            'format': 'bestvideo+bestaudio/best',
            'merge_output_format': 'mp4',
-           'outtmpl': 'video.mp4',
-           'concurrent_fragment_downloads': 30,
-           'retries': 99,
-           'fragment_retries': 99,
+           'outtmpl': 'video.%(ext)s',
+           'concurrent_fragment_downloads': 40,
+           'retries': 100,
+           'fragment_retries': 100,
            'http_headers': {
-               'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36',
+               'User-Agent': 'Mozilla/5.0 (Linux; Android 14; SM-S928B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.6778.200 Mobile Safari/537.36',
                'Referer': 'https://www.theveteran.in/',
-               'X-CDN-Tag': 'empty',
-               'Cache-Control': 'no-cache',
+               'Origin': 'https://www.theveteran.in',
                'Accept': '*/*',
                'Accept-Encoding': 'gzip, deflate, br',
                'Connection': 'keep-alive',
+               'Cache-Control': 'no-cache',
+               'Pragma': 'no-cache',
            },
+           'nocheckcertificate': True,
+           'extractor_args': {'generic': {'http_headers': {'Cache-Control': 'no-cache'}}},
            'sleep_interval': 1,
            'max_sleep_interval': 5,
-           'nocheckcertificate': True,
+           'rm_cache_dir': True,           # ← clears old broken cache
     }
 
     try:
