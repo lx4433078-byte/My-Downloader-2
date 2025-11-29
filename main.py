@@ -34,11 +34,26 @@ async def any_msg(message: types.Message):
     msg = await message.reply("Downloading… (3–15 min)")
 
     ydl_opts = {
-        'format': 'best',
-        'outtmpl': '%(id)s.%(ext)s',
-        'concurrent_fragment_downloads': 15,
-        'retries': 30,
-        'http_headers': {'Referer': 'https://www.classplusapp.com/'},
+           'format': 'best',
+           'outtmpl': '%(id)s.%(ext)s',
+           'concurrent_fragment_downloads': 20,
+           'retries': 30,
+           'fragment_retries': 30,
+           'quiet': False,
+           'no_warnings': False,
+           'extractor_retries': 10,
+           'http_headers': {
+               'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36',
+               'Referer': 'https://www.classplusapp.com/',
+               'Origin': 'https://www.classplusapp.com',
+               'Accept': '*/*',
+               'Accept-Language': 'en-US,en;q=0.9',
+               'Connection': 'keep-alive',
+               'Sec-Fetch-Dest': 'empty',
+               'Sec-Fetch-Mode': 'cors',
+               'Sec-Fetch-Site': 'cross-site',
+           },
+           'cookiefile': 'cookies.txt',   # ← this line is the magic
     }
 
     try:
